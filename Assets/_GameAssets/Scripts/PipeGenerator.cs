@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PipeGenerator : MonoBehaviour {
     [SerializeField] Transform Tuberia;
+    [SerializeField] float ratioTuberia = 2f;
 
-	// Use this for initialization
-	void Start () {
-        InvokeRepeating("GeneratePipe", 0, 2);
+    // Use this for initialization
+    void Start () {
+        InvokeRepeating("GeneratePipe", 0, ratioTuberia);
 
     }
 	
@@ -18,11 +19,12 @@ public class PipeGenerator : MonoBehaviour {
 
     void GeneratePipe()
     {
-        
-        Instantiate(Tuberia, transform.position, Quaternion.identity);
+        if (GameConfig.IsPlaying())
+        {
 
-        
+            Instantiate(Tuberia, transform.position, Quaternion.identity);
         }
+    }
 
    
 

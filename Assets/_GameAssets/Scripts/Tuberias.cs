@@ -8,9 +8,13 @@ public class Tuberias : MonoBehaviour
     // Use this for initialization
 
     [SerializeField] int speed = 3;
+    [SerializeField] float limiteInfTuberia = -1;
+    [SerializeField] float limiteSupTuberia = 1;
+    [SerializeField] float limiteDistanciaDestruccion = -20;
+
     void Start()
     {
-        float factorPosicion = Random.RandomRange(-1, 1);
+        float factorPosicion = Random.Range(limiteInfTuberia, limiteSupTuberia);
         transform.position = new Vector3
             (transform.position.x,
             transform.position.y + factorPosicion,
@@ -29,7 +33,7 @@ public class Tuberias : MonoBehaviour
 
             transform.Translate(Vector3.left * Time.deltaTime * speed);
 
-            if (transform.position.x < -30)
+            if (transform.position.x < limiteDistanciaDestruccion)
             {
                 Destroy(this.gameObject);
             }

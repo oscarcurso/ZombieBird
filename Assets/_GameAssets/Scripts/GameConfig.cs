@@ -20,7 +20,7 @@ public class GameConfig  {
     public static void ParaJuego()
 
         {
-            
+            jugando = false;  
         }
 
 
